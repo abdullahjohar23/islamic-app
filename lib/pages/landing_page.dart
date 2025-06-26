@@ -35,6 +35,8 @@ class LandingPage extends StatelessWidget {
                             Image.asset(
                                 'asset/images/quran.png',
                                 width: deviceWidth*0.3,
+                                height: deviceWidth*0.3,
+                                fit: BoxFit.cover,
                             ),
                     
                             SizedBox(height: deviceHeight*0.05),
