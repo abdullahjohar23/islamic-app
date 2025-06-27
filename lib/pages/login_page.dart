@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamic_app/pages/signup_page.dart';
 
 class LoginPage extends StatefulWidget {
     const LoginPage({super.key});
@@ -8,6 +9,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+    bool _obscureText = true;
+
     @override
     Widget build(BuildContext context) {
         final double deviceWidth = MediaQuery.of(context).size.width;
@@ -61,7 +64,8 @@ class _LoginPageState extends State<LoginPage> {
                         Container(
                             width: deviceWidth,
                             height: deviceHeight,
-                            margin: EdgeInsets.only(top: deviceHeight/6),
+                            // margin: EdgeInsets.only(top: deviceHeight/6),
+                            margin: EdgeInsets.only(top: deviceHeight * 0.15), // Adjust this value as needed
                             padding: EdgeInsets.only(left: deviceWidth*0.05, right: deviceWidth*0.05, top: deviceHeight*0.025),
                         
                             decoration: BoxDecoration(
@@ -72,14 +76,14 @@ class _LoginPageState extends State<LoginPage> {
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                    // Login Label
+                                    //* Login Label
                                     Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                             Text(
                                                 'Login',
                                                 style: TextStyle(
-                                                    fontSize: deviceWidth*0.1,
+                                                    fontSize: deviceWidth*0.07,
                                                     color: Color(0xffa193c6),
                                                     fontWeight: FontWeight.bold,
                                                     fontFamily: 'Lora',
@@ -91,136 +95,156 @@ class _LoginPageState extends State<LoginPage> {
                                     SizedBox(height: deviceHeight*0.02),
 
                                     //* Username
-                                    Container(
-                                        child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                                Text(
-                                                    'Username',
-                                                    style: TextStyle(
-                                                        fontSize: deviceWidth*0.06,
-                                                        color: Color(0xffa193c6),
-                                                        fontWeight: FontWeight.w500
-                                                    ),
+                                    Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                            Text(
+                                                'Username',
+                                                style: TextStyle(
+                                                    fontSize: deviceWidth*0.05,
+                                                    color: Color(0xffa193c6),
+                                                    fontWeight: FontWeight.w500
                                                 ),
-
-                                                SizedBox(height: deviceHeight*0.02),
-
-                                                Container(
-                                                    margin: EdgeInsets.symmetric(horizontal: deviceWidth*0.01),
-
-                                                    decoration: BoxDecoration(
-                                                        border: Border.all(color: Color(0xff7c71b2)),
-                                                        borderRadius: BorderRadius.circular(8),
+                                            ),
+                                    
+                                            SizedBox(height: deviceHeight*0.02),
+                                    
+                                            Container(
+                                                margin: EdgeInsets.symmetric(horizontal: deviceWidth*0.01),
+                                    
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(color: Color(0xff7c71b2)),
+                                                    borderRadius: BorderRadius.circular(8),
+                                                ),
+                                    
+                                                child: TextField(
+                                                    style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: deviceWidth*0.047,
+                                                        fontWeight: FontWeight.w400
                                                     ),
-
-                                                    child: TextField(
-                                                        style: TextStyle(color: Colors.black54, fontSize: 18),
-
-                                                        decoration: InputDecoration(
-                                                            contentPadding: EdgeInsets.symmetric(
-                                                                horizontal: deviceWidth*0.045,
-                                                                vertical: deviceHeight*0.01,
+                                    
+                                                    decoration: InputDecoration(
+                                                        contentPadding: EdgeInsets.symmetric(
+                                                            horizontal: deviceWidth*0.045,
+                                                            vertical: deviceHeight*0.01,
+                                                        ),
+                                    
+                                                        hintText: 'Enter Username',
+                                                        
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey.shade400,
+                                                            fontSize: deviceWidth*0.047,
+                                                            fontWeight: FontWeight.w500
+                                                        ),
+                                    
+                                                        // Thick border when not focused
+                                                        enabledBorder: OutlineInputBorder(
+                                                            borderRadius: BorderRadius.circular(8),
+                                                            borderSide: const BorderSide(
+                                                                color: Color(0xffc8bbdc), // Border color
+                                                                width: 1.5, // Border thickness
                                                             ),
-
-                                                            hintText: 'Enter Username',
-                                                            hintStyle: TextStyle(
-                                                                color: Colors.grey.shade400,
-                                                                fontSize: deviceWidth*0.05,
-                                                                fontWeight: FontWeight.w500
-                                                            ),
-
-                                                            // Thick border when not focused
-                                                            enabledBorder: OutlineInputBorder(
-                                                                borderRadius: BorderRadius.circular(8),
-                                                                borderSide: const BorderSide(
-                                                                    color: Color(0xffc8bbdc), // Border color
-                                                                    width: 1.5, // Border thickness
-                                                                ),
-                                                            ),
-
-                                                            // Thick border when focused (clicked)
-                                                            focusedBorder: OutlineInputBorder(
+                                                        ),
+                                    
+                                                        // Thick border when focused (clicked)
+                                                        focusedBorder: OutlineInputBorder(
                                                             borderRadius: BorderRadius.circular(8),
                                                             borderSide: const BorderSide(
                                                                 color: Color(0xff7c71b2), // Highlighted border
                                                                 width: 2.5,
-                                                            ),),
+                                                            ),
                                                         ),
                                                     ),
                                                 ),
-                                            ],
-                                        ),
+                                            ),
+                                        ],
                                     ),
 
                                     SizedBox(height: deviceHeight*0.03),
 
                                     //* Password
-                                    Container(
-                                        child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                                Text(
-                                                    'Password',
-                                                    style: TextStyle(
-                                                        fontSize: deviceWidth*0.06,
-                                                        color: Color(0xffa193c6),
-                                                        fontWeight: FontWeight.w500
-                                                    ),
+                                    Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                            Text(
+                                                'Password',
+                                                style: TextStyle(
+                                                    fontSize: deviceWidth*0.05,
+                                                    color: Color(0xffa193c6),
+                                                    fontWeight: FontWeight.w500
                                                 ),
-
-                                                SizedBox(height: deviceHeight*0.02),
-
-                                                Container(
-                                                    margin: EdgeInsets.symmetric(horizontal: deviceWidth*0.01),
-
-                                                    decoration: BoxDecoration(
-                                                        border: Border.all(color: Color(0xff7c71b2)),
-                                                        borderRadius: BorderRadius.circular(8),
+                                            ),
+                                    
+                                            SizedBox(height: deviceHeight*0.02),
+                                    
+                                            Container(
+                                                margin: EdgeInsets.symmetric(horizontal: deviceWidth*0.01),
+                                    
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(color: Color(0xff7c71b2)),
+                                                    borderRadius: BorderRadius.circular(8),
+                                                ),
+                                    
+                                                child: TextField(
+                                                    obscureText: _obscureText,
+                                                    obscuringCharacter: '●',
+                                                    enableSuggestions: false,
+                                                    autocorrect: false,
+                                                    keyboardType: TextInputType.visiblePassword,
+                                    
+                                                    style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: deviceWidth*0.047,
+                                                        fontWeight: FontWeight.w400
                                                     ),
-
-                                                    child: TextField(
-                                                        style: TextStyle(color: Colors.black54, fontSize: 18),
-                                                        obscureText: true,
-                                                        obscuringCharacter: '●',
-                                                        enableSuggestions: false,
-                                                        autocorrect: false,
-                                                        keyboardType: TextInputType.visiblePassword,
-
-                                                        decoration: InputDecoration(
-                                                            contentPadding: EdgeInsets.symmetric(
-                                                                horizontal: deviceWidth*0.045,
-                                                                vertical: deviceHeight*0.01,
+                                                    
+                                                    decoration: InputDecoration(
+                                                        contentPadding: EdgeInsets.symmetric(
+                                                            horizontal: deviceWidth*0.045,
+                                                            vertical: deviceHeight*0.01,
+                                                        ),
+                                    
+                                                        hintText: 'Enter Password',
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey.shade400,
+                                                            fontSize: deviceWidth*0.047,
+                                                            fontWeight: FontWeight.w500
+                                                        ),
+                                    
+                                                        // hide or unhide the password
+                                                        suffixIcon: IconButton(
+                                                            icon: Icon(
+                                                                _obscureText ? Icons.visibility_off : Icons.visibility,
+                                                                color: const Color(0xff7c71b2),
                                                             ),
-
-                                                            hintText: 'Enter Password',
-                                                            hintStyle: TextStyle(
-                                                                color: Colors.grey.shade400,
-                                                                fontSize: deviceWidth*0.05,
-                                                                fontWeight: FontWeight.w500
-                                                            ),
-
-                                                            // Thick border when not focused
-                                                            enabledBorder: OutlineInputBorder(
-                                                                borderRadius: BorderRadius.circular(8),
-                                                                borderSide: const BorderSide(
-                                                                    color: Color(0xffc8bbdc), // Border color
-                                                                    width: 1.5, // Border thickness
-                                                                ),
-                                                            ),
-
-                                                            // Thick border when focused (clicked)
-                                                            focusedBorder: OutlineInputBorder(
+                                                            onPressed: () {
+                                                                setState(() {
+                                                                    _obscureText = !_obscureText;
+                                                                });
+                                                            },
+                                                        ),
+                                    
+                                                        // Thick border when not focused
+                                                        enabledBorder: OutlineInputBorder(
                                                             borderRadius: BorderRadius.circular(8),
                                                             borderSide: const BorderSide(
-                                                                color: Color(0xff7c71b2), // Highlighted border
-                                                                width: 2.5,
-                                                            ),),
+                                                                color: Color(0xffc8bbdc), // Border color
+                                                                width: 1.5, // Border thickness
+                                                            ),
                                                         ),
+                                    
+                                                        // Thick border when focused (clicked)
+                                                        focusedBorder: OutlineInputBorder(
+                                                        borderRadius: BorderRadius.circular(8),
+                                                        borderSide: const BorderSide(
+                                                            color: Color(0xff7c71b2), // Highlighted border
+                                                            width: 2.5,
+                                                        ),),
                                                     ),
                                                 ),
-                                            ],
-                                        ),
+                                            ),
+                                        ],
                                     ),
                                     
                                     SizedBox(height: deviceHeight*0.02),
@@ -233,12 +257,14 @@ class _LoginPageState extends State<LoginPage> {
                                             Text(
                                                 'Forgot Password?',
                                                 style: TextStyle(
-                                                    color: Colors.black54,
+                                                    color: Colors.black87,
                                                     fontSize: deviceWidth*0.042,
+                                                    fontWeight: FontWeight.w500
                                                 ),
                                             ),
                                         ],
                                     ),
+
                                     SizedBox(height: deviceHeight*0.02),
 
                                     //* Sign In button
@@ -250,11 +276,11 @@ class _LoginPageState extends State<LoginPage> {
                                             
                                                 child: Material(
                                                     elevation: 3,
-                                                    borderRadius: BorderRadius.circular(25),
+                                                    borderRadius: BorderRadius.circular(10),
                                                     
                                                     child: Container(
                                                         width: deviceWidth*0.88,
-                                                        padding: EdgeInsets.symmetric(horizontal: deviceWidth*0.25, vertical: deviceHeight*0.01),
+                                                        padding: EdgeInsets.symmetric(vertical: deviceHeight*0.01),
                                                         
                                                         decoration: BoxDecoration(
                                                             color: Color(0xffa193c6),
@@ -267,8 +293,8 @@ class _LoginPageState extends State<LoginPage> {
                                                                 'Sign In',
                                                                 style: TextStyle(
                                                                     color: Colors.white,
-                                                                    fontSize: deviceHeight*0.03,
-                                                                    fontWeight: FontWeight.bold,
+                                                                    fontSize: deviceWidth*0.05,
+                                                                    fontWeight: FontWeight.w500,
                                                                 ),
                                                             ),
                                                         ),
@@ -288,7 +314,7 @@ class _LoginPageState extends State<LoginPage> {
                                             Text(
                                                 'Or',
                                                 style: TextStyle(
-                                                    color: Colors.black,
+                                                    color: Colors.black87,
                                                     fontSize: deviceWidth*0.042,
                                                     fontWeight: FontWeight.w500
                                                 ),
@@ -307,7 +333,7 @@ class _LoginPageState extends State<LoginPage> {
                                             
                                                 child: Material(
                                                     elevation: 3,
-                                                    borderRadius: BorderRadius.circular(25),
+                                                    borderRadius: BorderRadius.circular(10),
                                                     
                                                     child: Container(
                                                         width: deviceWidth*0.88,
@@ -325,8 +351,9 @@ class _LoginPageState extends State<LoginPage> {
                                                                 children: [
                                                                     Image.asset(
                                                                         'asset/images/google.png',
-                                                                        width: deviceWidth*0.08,
+                                                                        width: deviceWidth*0.07,
                                                                         color: Colors.white,
+                                                                        fit: BoxFit.cover,
                                                                     ),
 
                                                                     SizedBox(width: deviceWidth*0.03),
@@ -335,8 +362,8 @@ class _LoginPageState extends State<LoginPage> {
                                                                         'Sign In with Google',
                                                                         style: TextStyle(
                                                                             color: Colors.white,
-                                                                            fontSize: deviceHeight*0.03,
-                                                                            fontWeight: FontWeight.bold,
+                                                                            fontSize: deviceWidth*0.05,
+                                                                            fontWeight: FontWeight.w500,
                                                                         ),
                                                                     ),
                                                                 ],
@@ -348,7 +375,65 @@ class _LoginPageState extends State<LoginPage> {
                                         ],
                                     ),
 
-                                    SizedBox(height: deviceHeight*0.02),
+                                    SizedBox(height: deviceHeight*0.05),
+
+                                    //* Don't have an account
+                                    Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                            Text(
+                                                "Don't have an account?",
+                                                style: TextStyle(
+                                                    color: Colors.black87,
+                                                    fontSize: deviceWidth*0.042,
+                                                    fontWeight: FontWeight.w400,
+                                                ),
+                                            ),
+
+                                            SizedBox(width: deviceWidth*0.02),
+                                
+                                            GestureDetector(
+                                                onTap: () {
+                                                    Navigator.of(context).push(
+                                                        PageRouteBuilder(
+                                                            pageBuilder: (context, animation, secondaryAnimation) => SignupPage(),
+                                                            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                                                                return RotationTransition(
+                                                                    turns: Tween<double>(
+                                                                        begin: 0.95,
+                                                                        end: 1.0,
+                                                                    ).animate(CurvedAnimation(
+                                                                        parent: animation,
+                                                                        curve: Curves.easeOutBack,
+                                                                    )),
+                                                                    child: ScaleTransition(
+                                                                        scale: Tween<double>(
+                                                                            begin: 0.8,
+                                                                            end: 1.0,
+                                                                        ).animate(CurvedAnimation(
+                                                                            parent: animation,
+                                                                            curve: Curves.easeOutBack,
+                                                                        )),
+                                                                        child: child,
+                                                                    ),
+                                                                );
+                                                            },
+                                                        ),
+                                                    );
+                                                },
+                                                
+                                                child: Text(
+                                                    'Sign up',
+                                                    style: TextStyle(
+                                                        color: Color(0xffa193c6),
+                                                        fontSize: deviceWidth * 0.042,
+                                                        fontWeight: FontWeight.w700,
+                                                    ),
+                                                ),
+                                            ),
+
+                                        ],
+                                    ),
                                 ],
                             ),
                         ),
