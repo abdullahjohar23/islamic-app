@@ -68,14 +68,25 @@ class LandingPage extends StatelessWidget {
                                     Navigator.of(context).push(
                                         PageRouteBuilder(
                                             pageBuilder: (context, animation, secondaryAnimation) => LoginPage(),
-                                            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                                                return SlideTransition(
-                                                    position: Tween<Offset>(
-                                                        begin: Offset(0.0, 1.0), // from bottom to up
-                                                        end: Offset.zero,
-                                                    ).animate(animation),
-                                                        
-                                                    child: child,
+                                                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                                                    return RotationTransition(
+                                                        turns: Tween<double>(
+                                                            begin: 0.95,
+                                                            end: 1.0,
+                                                        ).animate(CurvedAnimation(
+                                                            parent: animation,
+                                                            curve: Curves.easeOutBack,
+                                                        )),
+                                                    child: ScaleTransition(
+                                                        scale: Tween<double>(
+                                                            begin: 0.8,
+                                                            end: 1.0,
+                                                        ).animate(CurvedAnimation(
+                                                            parent: animation,
+                                                            curve: Curves.easeOutBack,
+                                                        )),
+                                                        child: child,
+                                                    ),
                                                 );
                                             },
                                         ),
