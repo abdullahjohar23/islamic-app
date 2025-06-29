@@ -189,9 +189,11 @@ class _LoginPageState extends State<LoginPage> {
                                                 child: TextField(
                                                     obscureText: _obscureText,
                                                     obscuringCharacter: '●',
-                                                    enableSuggestions: false,
                                                     autocorrect: false,
-                                                    keyboardType: TextInputType.visiblePassword,
+                                                    enableSuggestions: false,
+                                                    textInputAction: TextInputAction.next,
+                                                    keyboardType: TextInputType.emailAddress,
+                                                    textCapitalization: TextCapitalization.none,
                                     
                                                     style: TextStyle(
                                                         color: Colors.black,
@@ -431,7 +433,6 @@ class _LoginPageState extends State<LoginPage> {
                                                     ),
                                                 ),
                                             ),
-
                                         ],
                                     ),
                                 ],
